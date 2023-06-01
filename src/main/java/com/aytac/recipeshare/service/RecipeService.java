@@ -60,7 +60,10 @@ public class RecipeService {
         if (recipe != null) {
             recipe.setName(request.name());
             recipe.setDescription(request.description());
-            recipe.setIngredients(request.ingredients());
+            recipe.setIngredients(request.ingredients().stream()
+                    .map(ingredientService::getIngredientById)
+                    .collect(Collectors.toList())
+            );
 
             recipeRepository.save(recipe);
         } else {
@@ -77,10 +80,11 @@ public class RecipeService {
     }
 
     public Recipe getRecipeEntityById(Long recipeId) {
+
         return recipeRepository.findById(recipeId).orElse(null);
     }
 
-    public void deleteRecipeById(Long id){
+    public void deleteRecipeById(Long id) {
         recipeRepository.deleteById(id);
     }
 }

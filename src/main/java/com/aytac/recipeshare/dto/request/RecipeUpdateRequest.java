@@ -7,6 +7,6 @@ import java.util.List;
 public record RecipeUpdateRequest(
         String name,
         String description,
-        List<Ingredient> ingredients
+        List<Long> ingredients //ingredient id list
 ) {
 }
