@@ -1,6 +1,5 @@
 package com.aytac.recipeshare.dto.request;
 
-import com.aytac.recipeshare.model.Ingredient;
 
 import java.util.List;
 
