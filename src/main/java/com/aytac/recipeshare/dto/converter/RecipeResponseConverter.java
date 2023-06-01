@@ -34,6 +34,7 @@ public class RecipeResponseConverter {
                         .map(IngredientResponseConverter::convert)
                         .collect(Collectors.toList()),
                 recipe.getLikes().size(),
+                recipe.getRates().size(),
                 Math.round(recipe.getRates().stream()
                         .map(Rate::getRateValue)
                         .mapToDouble(d -> d)
