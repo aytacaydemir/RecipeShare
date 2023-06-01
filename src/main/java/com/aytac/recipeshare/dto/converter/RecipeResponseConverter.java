@@ -31,7 +31,7 @@ public class RecipeResponseConverter {
                 recipe.getUser().getId(),          //user için ayrı bir converter oluşturulabilir.
                 recipe.getUser().getUsername(),
                 recipe.getIngredients().stream()
-                        .map(IngredientResponseConverter::convert)
+                        .map(IngredientResponseConverter::convertToIngredientResponse)
                         .collect(Collectors.toList()),
                 recipe.getLikes().size(),
                 recipe.getRates().size(),
