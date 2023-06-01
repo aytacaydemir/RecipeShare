@@ -13,6 +13,8 @@ public record RecipeResponse(
         String userName,
         List<IngredientResponse> ingredients,
         int likeCount,
+
+        int rateCount,
         double rateAverageValue
 
         ) {
