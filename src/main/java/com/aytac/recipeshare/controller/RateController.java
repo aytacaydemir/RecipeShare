@@ -4,10 +4,7 @@ import com.aytac.recipeshare.dto.request.RateCreateRequest;
 import com.aytac.recipeshare.dto.response.RateResponse;
 import com.aytac.recipeshare.service.RateService;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/rates")
@@ -20,5 +17,10 @@ public class RateController {
     @PostMapping
     public RateResponse createRate(@Valid @RequestBody RateCreateRequest request){
         return rateService.createRate(request);
+    }
+
+    @PutMapping("/{id}/{rateValue}")
+    public RateResponse updateRateById(@Valid Long id, int rateValue){
+        return rateService.updateRateByIdAndRateValue(id,rateValue);
     }
 }

@@ -41,4 +41,12 @@ public class RateService {
 
         return converter.convert(rate);
     }
+
+    public RateResponse updateRateByIdAndRateValue(Long id, int rateValue) {
+
+        Rate rate = rateRepository.findById(id).orElse(null);
+        rate.setRateValue(rateValue);
+        rateRepository.save(rate);
+        return converter.convert(rate);
+    }
 }
