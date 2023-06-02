@@ -29,6 +29,11 @@ public class RecipeController {
         return ResponseEntity.ok(recipeService.getRecipeById(id));
     }
 
+    @GetMapping("/with-ingredient/{ingredientId}")
+    public ResponseEntity<List<RecipeResponse>> getRecipesByIngredient(Long ingredientId) {
+        return ResponseEntity.ok(recipeService.getRecipesByIngredient(ingredientId));
+    }
+
     @PostMapping
     public ResponseEntity<RecipeResponse> createRecipe(@RequestBody RecipeCreateRequest request) {
         return ResponseEntity.ok(recipeService.createRecipe(request)); //responseEntity.created
@@ -44,4 +49,5 @@ public class RecipeController {
     public void deleteRecipeById(@PathVariable Long id) {
         recipeService.deleteRecipeById(id);
     }
+
 }
