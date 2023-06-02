@@ -76,13 +76,17 @@ public class RecipeService {
 
     public RecipeResponse getRecipeById(Long recipeId) {  //return RecipeResponse??
 
-        Recipe recipe = recipeRepository.findById(recipeId).orElse(null);
+        Recipe recipe = recipeRepository.findById(recipeId)
+                .orElseThrow(() ->
+                        new RecipeNotFoundException("There is no recipe with this id= "+ recipeId));
         return converter.convert(recipe);
     }
 
     public Recipe getRecipeEntityById(Long recipeId) {
 
-        return recipeRepository.findById(recipeId).orElse(null);
+        return recipeRepository.findById(recipeId).
+                orElseThrow(() ->
+                        new RecipeNotFoundException("There is no recipe with this id= "+ recipeId));
     }
 
     public void deleteRecipeById(Long id) {
