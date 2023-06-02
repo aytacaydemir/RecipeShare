@@ -87,4 +87,10 @@ public class RecipeService {
     public void deleteRecipeById(Long id) {
         recipeRepository.deleteById(id);
     }
+
+    public List<RecipeResponse> getRecipesByIngredient(Long ingredientId) {
+
+        List<Recipe> recipeList = recipeRepository.findByIngredientsId(ingredientId);
+        return recipeList.stream().map(converter::convert).collect(Collectors.toList());
+    }
 }
