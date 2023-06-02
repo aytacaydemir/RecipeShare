@@ -4,6 +4,7 @@ import com.aytac.recipeshare.dto.converter.RecipeResponseConverter;
 import com.aytac.recipeshare.dto.request.RecipeCreateRequest;
 import com.aytac.recipeshare.dto.request.RecipeUpdateRequest;
 import com.aytac.recipeshare.dto.response.RecipeResponse;
+import com.aytac.recipeshare.exception.RecipeNotFoundException;
 import com.aytac.recipeshare.model.Recipe;
 import com.aytac.recipeshare.model.User;
 import com.aytac.recipeshare.repository.RecipeRepository;
@@ -56,7 +57,7 @@ public class RecipeService {
 
     public RecipeResponse updateRecipeById(Long recipeId, RecipeUpdateRequest request) {
 
-        Recipe recipe = recipeRepository.findById(recipeId).orElse(null); //throw recipe not found exception
+        Recipe recipe = getRecipeEntityById(recipeId);
 
         if (recipe != null) {
             recipe.setName(request.name());
