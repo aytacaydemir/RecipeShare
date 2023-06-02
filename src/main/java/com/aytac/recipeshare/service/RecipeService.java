@@ -10,6 +10,7 @@ import com.aytac.recipeshare.repository.RecipeRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -92,5 +93,13 @@ public class RecipeService {
 
         List<Recipe> recipeList = recipeRepository.findByIngredientsId(ingredientId);
         return recipeList.stream().map(converter::convert).collect(Collectors.toList());
+    }
+
+    public List<RecipeResponse> getRecipesBySearch(String query) {
+        List<String> keywordList = Arrays.asList(query.split(" "));
+        List<Recipe> recipes = recipeRepository.
+                findDistinctByIngredientsNameIgnoreCaseInOrNameContainingIgnoreCase(keywordList, query);
+
+        return recipes.stream().map(converter::convert).collect(Collectors.toList());
     }
 }
