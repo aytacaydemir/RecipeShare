@@ -30,8 +30,13 @@ public class RecipeController {
     }
 
     @GetMapping("/with-ingredient/{ingredientId}")
-    public ResponseEntity<List<RecipeResponse>> getRecipesByIngredient(Long ingredientId) {
+    public ResponseEntity<List<RecipeResponse>> getRecipesByIngredient(@PathVariable Long ingredientId) {
         return ResponseEntity.ok(recipeService.getRecipesByIngredient(ingredientId));
+    }
+
+    @GetMapping("/search/{query}")
+    public ResponseEntity<List<RecipeResponse>> getRecipesBySearch(@PathVariable String query){
+        return ResponseEntity.ok(recipeService.getRecipesBySearch(query));
     }
 
     @PostMapping
