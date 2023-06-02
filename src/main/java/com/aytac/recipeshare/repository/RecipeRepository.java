@@ -7,4 +7,13 @@ import java.util.List;
 
 public interface RecipeRepository extends JpaRepository<Recipe, Long> {
     List<Recipe> findByIngredientsId(Long ingredientId);
+
+    /*SELECT DISTINCT r FROM Recipe
+    r JOIN r.ingredients i
+    WHERE LOWER(i.name)
+    LIKE %:ingredientName%
+    OR LOWER(r.name)
+    LIKE %:recipeName%*/
+    List<Recipe> findDistinctByIngredientsNameIgnoreCaseInOrNameContainingIgnoreCase(
+            List<String> ingredientNames, String recipeName);
 }
