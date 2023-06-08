@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/api/likes")
 public class LikeController {
 
-    //aynı user'ın iki defa like atamaması için kontrol eklenecek.
     private final LikeService likeService;
 
     public LikeController(LikeService likeService) {
