@@ -14,6 +14,6 @@ public class SpringdocConfig {
     public OpenAPI baseOpenAPI(){
         return new OpenAPI().info(new Info().title("Recipe Share App")
                 .version("1.0.0").
-                description("Recipe Share Application Application Programming Interface Documentation"));
+                description("Recipe Share Application, Application Programming Interface Documentation"));
     }
 }
